@@ -65,12 +65,24 @@ expect( location() ).toEqual(expect.objectContaining({
 }));
 ```
 
+
+<br>
+<br>
+
 ## .any (https://jestjs.io/docs/en/expect#expectanyconstructor)
 ```javascript
 // expect.any(constructor) matches anything that was created with the given constructor. You can use it inside toEqual or toBeCalledWith instead of a literal value.
 expect( location() ).toEqual(expect.objectContaining({
-    locationId: expect.any(Number),
-    geo: expect.any(Array),
-    isFetching: expect.any(Boolean)
+    locationId: expect.any(Number)
 }));
 ```
+
+## .anything (https://jestjs.io/docs/en/expect#expectanything)
+```javascript
+// expect.anything() matches anything but null or undefined. You can use it inside toEqual or toBeCalledWith instead of a literal value. For example, if you want to check that a mock function is called with a non-null argument:
+expect( location() ).toEqual(expect.objectContaining({
+    locationId: expect.anything()
+}));
+```
+
+
