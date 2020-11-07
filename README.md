@@ -86,3 +86,10 @@ expect( location() ).toEqual(expect.objectContaining({
 ```
 
 
+
+## .toBeTruthy (https://jestjs.io/docs/en/expect#tobetruthy)
+```javascript
+// Use .toBeTruthy when you don't care what a value is and you want to ensure a value is true in a boolean context. 
+expect( location() ).toBeTruthy();
+```
+
