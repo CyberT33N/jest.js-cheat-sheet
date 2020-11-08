@@ -93,3 +93,10 @@ expect( location() ).toEqual(expect.objectContaining({
 expect( location() ).toBeTruthy();
 ```
 
+
+## .toMatch (https://jestjs.io/docs/en/expect#tomatchregexp--string)
+```javascript
+// Use .toMatch to check that a string matches a regular expression.
+expect( getDate() ).toMatch(/\d\d\/\d\d\/\d\d\d\d/gmi);
+```
+
