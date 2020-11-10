@@ -102,3 +102,11 @@ expect( location() ).toBeTruthy();
 expect( getDate() ).toMatch(/\d\d\/\d\d\/\d\d\d\d/gmi);
 ```
 
+## Operators
+```javascript
+// You can use operators to check for multiple conditions
+expect(msg).toEqual( expect.objectContaining({date: expect.anything()}) &&
+expect.objectContaining({msg: expect.anything()}) &&
+expect.objectContaining({room: expect.anything()}) &&
+expect.objectContaining({usertoken: expect.anything()}) );
+```
