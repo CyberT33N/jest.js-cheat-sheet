@@ -45,7 +45,7 @@ expect( {a: undefined, b: 2} ).toEqual( {b: 2} );
 ## .toStrictEqual (https://jestjs.io/docs/en/expect#tostrictequalvalue)
 ```javascript
 // test that objects have the same types as well as structure. Check above .toEqual for compare difference
-expect( {"test": 1} ).toEqual( {"test": 1} );
+expect( {"test": 1} ).toStrictEqual( {"test": 1} );
 ```
 
 
