@@ -84,8 +84,9 @@ expect( location() ).toEqual(expect.objectContaining({
     locationId: expect.anything()
 }));
 ```
-<br>
-<br>
+
+
+<br><br>
 
 
 
@@ -95,12 +96,37 @@ expect( location() ).toEqual(expect.objectContaining({
 expect( location() ).toBeTruthy();
 ```
 
+<br><br>
+
+
 
 ## .toMatch (https://jestjs.io/docs/en/expect#tomatchregexp--string)
 ```javascript
 // Use .toMatch to check that a string matches a regular expression.
 expect( getDate() ).toMatch(/\d\d\/\d\d\/\d\d\d\d/gmi);
 ```
+
+<br><br>
+
+## .include (https://www.chaijs.com/api/bdd/#method_include)
+```javascript
+expect('foobar').to.include('foo');
+
+expect([1, 2, 3]).to.include(2);
+```
+
+
+
+
+
+
+
+
+
+<br><br>
+
+
+
 
 ## Operators
 ```javascript
