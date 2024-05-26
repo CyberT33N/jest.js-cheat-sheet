@@ -239,7 +239,7 @@ export default createJestConfig(config)
 
 
 ## setupFiles
-- Execute specific js file before all test
+- Diese Option ermöglicht es Ihnen, eine Liste von Modulen anzugeben, die vor dem Starten Ihrer Tests ausgeführt werden sollen. Diese Dateien werden einmalig vor dem Laden von Jest selbst ausgeführt. Sie eignen sich gut für Setup-Aufgaben, die nicht von Jest abhängen.
 ```javascript
 setupFiles: ['<rootDir>/test/setup-tests.ts']
 ```
@@ -249,6 +249,17 @@ setupFiles: ['<rootDir>/test/setup-tests.ts']
 import * as dotenv from 'dotenv';
 dotenv.config({ path: './config.env.test' });
 ```
+
+<br><br>
+<br><br>
+
+
+## setupFiles
+- setupFilesAfterEnv: Im Gegensatz dazu führt Jest diese Dateien nach dem Einrichten der Testumgebung (beforeEach, afterEach, etc.) und vor dem Ausführen der Tests aus. Dies ist nützlich, wenn Sie spezifische Setup-Aufgaben ausführen müssen, die Jest-Konstrukte wie describe und it verwenden.
+
+
+
+
 
 
 
