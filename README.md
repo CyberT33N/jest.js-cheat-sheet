@@ -285,6 +285,7 @@ dotenv.config({ path: './config.env.test' });
 <br><br>
 
 # Expect (https://jestjs.io/docs/en/expect)
+- **Not needed in Next.js**
 ```bash
 npm i expect --save-dev
 ```
@@ -292,8 +293,13 @@ npm i expect --save-dev
 const expect = require('expect');
 ```
 
-<br>
-<br>
+
+
+
+
+
+<br><br>
+<br><br>
 
 ## .toBe
 ```javascript
@@ -302,6 +308,29 @@ const add = (a, b) => a + b;
 expect( add(2, 3) ).toBe(5);
 expect( typeof add(2, 3) ).toBe('number');
 ```
+
+
+
+
+
+
+
+<br><br>
+<br><br>
+
+## .toBe
+```javascript
+// Use .toBe to compare primitive values or to check referential identity of object instances. It calls Object.is to compare values, which is even better for testing than === strict equality operator.
+const add = (a, b) => a + b;
+expect( add(2, 3) ).toBe(5);
+expect( typeof add(2, 3) ).toBe('number');
+```
+
+
+
+
+
+
 
 <br>
 <br>
