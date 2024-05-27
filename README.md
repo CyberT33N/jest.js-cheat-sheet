@@ -293,6 +293,27 @@ npm i expect --save-dev
 const expect = require('expect');
 ```
 
+br><br>
+<br><br>
+
+## Error
+
+<br><br>
+
+## toThrow
+
+<br><br>
+
+### Async
+```
+await expect(axiosRequestWrapper(config)).rejects.toThrow('Any crazy error..')
+```
+
+
+
+
+
+
 
 
 
