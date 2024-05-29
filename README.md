@@ -300,6 +300,9 @@ const expect = require('expect');
 
 
 
+
+
+
 <br><br>
 <br><br>
  _____________________________________________________
@@ -370,12 +373,14 @@ expect( typeof add(2, 3) ).toBe('number');
 <br><br>
 <br><br>
 
-## .toBe
+## .toBeInstanceOf
+- https://jestjs.io/docs/expect#tobeinstanceofclass
 ```javascript
-// Use .toBe to compare primitive values or to check referential identity of object instances. It calls Object.is to compare values, which is even better for testing than === strict equality operator.
-const add = (a, b) => a + b;
-expect( add(2, 3) ).toBe(5);
-expect( typeof add(2, 3) ).toBe('number');
+class A {}
+
+expect(new A()).toBeInstanceOf(A);
+expect(() => {}).toBeInstanceOf(Function);
+expect(new A()).toBeInstanceOf(Function); // throws
 ```
 
 
