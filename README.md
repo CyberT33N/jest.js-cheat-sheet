@@ -293,8 +293,20 @@ npm i expect --save-dev
 const expect = require('expect');
 ```
 
-br><br>
+
+
+
+
+
+
+
 <br><br>
+<br><br>
+ _____________________________________________________
+ _____________________________________________________
+<br><br>
+<br><br>
+
 
 ## Error
 
@@ -303,6 +315,18 @@ br><br>
 ## toThrow
 
 <br><br>
+
+### Sync
+```javascript
+test('throws on octopus', () => {
+  expect(() => {
+    drinkFlavor('octopus');
+  }).toThrow();
+});
+```
+
+<br><br>
+
 
 ### Async
 ```
@@ -319,8 +343,15 @@ await expect(axiosRequestWrapper(config)).rejects.toThrow('Any crazy error..')
 
 
 
+
+
 <br><br>
 <br><br>
+ _____________________________________________________
+ _____________________________________________________
+<br><br>
+<br><br>
+
 
 ## .toBe
 ```javascript
