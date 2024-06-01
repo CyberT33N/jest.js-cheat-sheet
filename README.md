@@ -40,6 +40,9 @@ const createJestConfig = nextJest({
 })
 
 const config: Config = {
+    // Timeout for all tests
+    testTimeout: 300000,
+
     // All imported modules in your tests should be mocked automatically
     // automock: false,
 
