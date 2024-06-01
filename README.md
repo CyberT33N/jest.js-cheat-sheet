@@ -365,7 +365,7 @@ package.json
     "start": "next start",
     "lint": "next lint",
     "test-only": "bash test-only.sh",
-    "test": "npm run test:unit && npm run test:integration",
+    "test": "jest test",
     "test:watch": "jest --watch",
     "test:integration": "jest test/integration",
     "test:unit": "jest test/unit"
