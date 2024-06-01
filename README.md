@@ -9,6 +9,38 @@ Jest.js Cheat Sheet with the most needed stuff..
 
 
 
+<br><br>
+<br><br>
+ _____________________________________________________
+ _____________________________________________________
+<br><br>
+<br><br>
+
+package.json
+```javascript
+"scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test-only": "bash test-only.sh",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:watch": "jest --watch",
+    "test:integration": "jest test/integration",
+    "test:unit": "jest test/unit"
+}
+```
+
+test-only.sh:
+- .only is not working inside of jest.. So we need a workaround
+```
+filtered_test=$(grep -rnwl ./test -e "test.only\|it.only\|describe.only" --include \*.js | tr '\n' ' ')
+jest --coverage --silent --runInBand --detectOpenHandles $filtered_test
+```
+
+
+
+
 
 
 
