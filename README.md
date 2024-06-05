@@ -375,8 +375,10 @@ package.json
 test-only.sh:
 - .only is not working inside of jest.. So we need a workaround
 ```
-filtered_test=$(grep -rnwl ./test -e "test.only\|it.only\|describe.only" --include \*.js | tr '\n' ' ')
-jest --verbose --coverage --silent --runInBand --detectOpenHandles $filtered_test
+# filtered_test=$(grep -rnwl ./test -e "test.only\|it.only\|describe.only" --include \*.js | tr '\n' ' ')
+# jest --verbose --coverage --runInBand --detectOpenHandles $filtered_test
+
+grep --exclude-dir=node_modules -rl . -e 'test.only\|it.only\|describe.only' --null | tr '\n' ' ' | xargs -0 npx jest | grep . || npx jest
 ```
 
 
