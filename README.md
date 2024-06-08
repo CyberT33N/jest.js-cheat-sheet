@@ -356,8 +356,10 @@ Options:
 <br><br>
 <br><br>
 
-package.json
-- console.log() is for default not be showed in your stdout. Make sure to use the --verbose Flag 
+# package.json
+- console.log() is for default not be showed in your stdout. Make sure to use the --verbose Flag
+- In order to archieve full coverage with integration and unit tests we use the setup below. When ever you want to make sure that your coverage is fully check run `npm run test`
+  - When you only run `npm run unit-test` your coverage is maybe not fully covered 
 ```javascript
 "scripts": {
     "dev": "next dev",
@@ -365,19 +367,19 @@ package.json
     "start": "next start",
     "lint": "next lint",
     "test-only": "bash test-only.sh",
-    "test": "jest test",
+    "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "test:integration": "jest test/integration",
-    "test:unit": "jest test/unit"
+    "test:integration": "jest --coverage --config jest.integration.config.ts",
+    "test:unit": "jest --coverage --config jest.unit.config.ts"
 }
 ```
 
-test-only.sh:
+<br><br>
+<br><br>
+
+## test-only.sh:
 - .only is not working inside of jest.. So we need a workaround
 ```
-# filtered_test=$(grep -rnwl ./test -e "test.only\|it.only\|describe.only" --include \*.js | tr '\n' ' ')
-# jest --verbose --coverage --runInBand --detectOpenHandles $filtered_test
-
 grep --exclude-dir=node_modules -rl . -e 'test.only\|it.only\|describe.only' --null | tr '\n' ' ' | xargs -0 npx jest | grep . || npx jest
 ```
 
@@ -385,17 +387,84 @@ grep --exclude-dir=node_modules -rl . -e 'test.only\|it.only\|describe.only' --n
 
 
 
+<br><br>
+<br><br>
+
+# jest.integration.config.ts
+```typescript
+/**
+ * For a detailed explanation regarding each configuration property, visit:
+ * https://jestjs.io/docs/configuration
+ */
+
+import type { Config } from 'jest'
+import nextJest from 'next/jest.js'
+
+import baseConfig from './jest.config'
+
+const createJestConfig = nextJest({
+    // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+    dir: './'
+})
+
+const config: Config = {
+    ...baseConfig,
+
+    // An array of glob patterns indicating a set of files for which coverage information should be collected
+    collectCoverageFrom: [
+        'app/api/**/route.ts'
+        // '!app/api/**/*.d.ts'
+    ]
+}
+
+// createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
+export default createJestConfig(config)
+```
+
 
 
 
 
 <br><br>
 <br><br>
- _____________________________________________________
- _____________________________________________________
-<br><br>
-<br><br>
 
+# jest.unit.config.ts
+```typescript
+/**
+ * For a detailed explanation regarding each configuration property, visit:
+ * https://jestjs.io/docs/configuration
+ */
+
+import type { Config } from 'jest'
+import nextJest from 'next/jest.js'
+
+import baseConfig from './jest.config'
+
+const createJestConfig = nextJest({
+    // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+    dir: './'
+})
+
+const config: Config = {
+    ...baseConfig,
+
+    // An array of glob patterns indicating a set of files for which coverage information should be collected
+    collectCoverageFrom: [
+        'app/**/*.service.ts',
+        'utils/**/*.ts',
+        '!utils/**/*.d.ts'
+    ]
+}
+
+// createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
+export default createJestConfig(config)
+```
+
+
+
+
+<br><br>
+<br><br>
 
 # jest.config.ts
 
@@ -418,11 +487,6 @@ const createJestConfig = nextJest({
 
 const config: Config = {
     // An array of glob patterns indicating a set of files for which coverage information should be collected
-    // collectCoverageFrom: [
-    //     'app/api/**/*.{js,jsx,ts,tsx}',
-    //     'utils/**/*.{js,jsx,ts,tsx}',
-    //     '!src/**/*.d.ts'
-    // ],
     
     // Timeout for all tests
     testTimeout: 300000,
