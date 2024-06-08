@@ -398,7 +398,7 @@ grep --exclude-dir=node_modules -rl . -e 'test.only\|it.only\|describe.only' --n
 
 
 # jest.config.ts
-- Make sure to edit with all paths where you want to test coverage
+
 <br><br>
 
 ## Next.js Example
@@ -418,11 +418,11 @@ const createJestConfig = nextJest({
 
 const config: Config = {
     // An array of glob patterns indicating a set of files for which coverage information should be collected
-    collectCoverageFrom: [
-        'app/api/**/*.{js,jsx,ts,tsx}',
-        'utils/**/*.{js,jsx,ts,tsx}',
-        '!src/**/*.d.ts'
-    ],
+    // collectCoverageFrom: [
+    //     'app/api/**/*.{js,jsx,ts,tsx}',
+    //     'utils/**/*.{js,jsx,ts,tsx}',
+    //     '!src/**/*.d.ts'
+    // ],
     
     // Timeout for all tests
     testTimeout: 300000,
