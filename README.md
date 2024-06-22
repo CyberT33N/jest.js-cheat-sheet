@@ -692,9 +692,23 @@ const config: Config = {
 export default createJestConfig(config)
 ```
 
+# Before/after Test
+- **WARNING** All options below does not work out of the box with next.js + typescript. You can not use top-level await in those files and required child files. You can only achieve this with tricky workarounds by chaning configs. It is recommended to switch to vitest instead if you can
+
 <br><br>
 <br><br>
 
+## globalSetup
+- Runs once before all tests
+
+<br><br>
+<br><br>
+  
+## globalTeardown
+- Runs once after all tests
+
+<br><br>
+<br><br>
 
 ## setupFiles
 - Diese Option ermöglicht es Ihnen, eine Liste von Modulen anzugeben, die vor dem Starten Ihrer Tests ausgeführt werden sollen. Diese Dateien werden einmalig vor dem Laden von Jest selbst ausgeführt. Sie eignen sich gut für Setup-Aufgaben, die nicht von Jest abhängen.
