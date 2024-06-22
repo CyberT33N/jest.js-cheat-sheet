@@ -374,6 +374,13 @@ Options:
 }
 ```
 
+## Run tests sequentially
+- `jest --runInBand`
+
+
+
+
+
 <br><br>
 <br><br>
 
